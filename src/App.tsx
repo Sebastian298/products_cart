@@ -2,7 +2,7 @@ import { Header } from "./components/Header";
 import { Products } from "./components/Products";
 import {useProduct} from './hooks/useProduct'
 export const App = () => {
-  const {products} = useProduct();
+  const {products,addToCart} = useProduct();
   return (
     <>
       <Header />
@@ -10,7 +10,7 @@ export const App = () => {
         <h2 className="text-center">Our Products</h2>
         <div className="row mt-5">
           {products.map((product) => (
-            <Products key={product.id} product={product}/>
+            <Products key={product.id} product={product} addToCart={addToCart}/>
           ))}
           
         </div>
