@@ -6,4 +6,5 @@ export type UseProduct = {
     cart: Product[];
     removeFromCart: (id: number) => void;
     increaseQuantity: (id: number) => void;
+    decreaseQuantity: (id: number) => void;
 }

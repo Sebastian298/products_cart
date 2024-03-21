@@ -41,5 +41,14 @@ export const useProduct = (): UseProduct => {
     );
     setCart(newCart);
   };
-  return { products, addToCart, cart, removeFromCart, increaseQuantity };
+
+  const decreaseQuantity = (id: number) => {
+    const newCart:Product[] = cart.map((item) =>
+      item.id === id && item.quantity > 1
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    );
+    setCart(newCart);
+  }
+  return { products, addToCart, cart, removeFromCart, increaseQuantity,decreaseQuantity };
 };
