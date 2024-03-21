@@ -51,5 +51,9 @@ export const useProduct = (): UseProduct => {
     );
     setCart(newCart);
   }
-  return { products, addToCart, cart, removeFromCart, increaseQuantity,decreaseQuantity };
+
+  const clearCart = () => {
+    setCart([]);
+  }
+  return { products, addToCart, cart, removeFromCart, increaseQuantity,decreaseQuantity,clearCart };
 };
