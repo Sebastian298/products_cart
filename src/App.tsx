@@ -1,4 +1,7 @@
-export const App = () => {
+import { getProducts } from "./api/services/product";
+export const App = async () => {
+  const products = await getProducts();
+  console.log(products);
   return (
     <>
       <header className="py-5 header">
