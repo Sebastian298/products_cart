@@ -1,5 +1,5 @@
 import { Header } from "./components/Header";
-import { Product } from "./components/Product";
+import { Products } from "./components/Products";
 import {useProduct} from './hooks/useProduct'
 export const App = () => {
   const {products} = useProduct();
@@ -10,7 +10,7 @@ export const App = () => {
         <h2 className="text-center">Our Products</h2>
         <div className="row mt-5">
           {products.map((product) => (
-            <Product key={product.id} />
+            <Products key={product.id} product={product}/>
           ))}
           
         </div>
