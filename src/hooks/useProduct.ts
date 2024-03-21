@@ -5,6 +5,8 @@ import { Product } from '../interfaces/Product';
 
 export const useProduct = (): UseProduct => {
     const [products, setProducts] = useState<Product[]>([]);
+    const [cart, setCart] = useState<Product[]>([]);
+    const MAX_ITEMS:number = 10;
     useEffect(() => {
         const fetchProducts = async () => {
             const productsRes = await getProducts();
@@ -12,5 +14,18 @@ export const useProduct = (): UseProduct => {
         };
         fetchProducts();
     }, []);
-    return { products };
+
+    const addToCart = (product: Product) => {
+        const itemExist:number = cart.findIndex((item) => item.id === product.id);
+        if(itemExist >= 0){
+            if (cart[itemExist].quantity >= MAX_ITEMS) return;
+            const newCart:Product[] = [...cart];
+            newCart[itemExist].quantity += 1;
+            setCart(newCart);
+        }else{
+            product.quantity = 1;
+            setCart([...cart, product]);
+        }
+    };
+    return { products, addToCart};
 }
