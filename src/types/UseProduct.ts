@@ -4,4 +4,5 @@ export type UseProduct = {
     products: Product[];
     addToCart: (product: Product) => void;
     cart: Product[];
+    removeFromCart: (id: number) => void;
 }

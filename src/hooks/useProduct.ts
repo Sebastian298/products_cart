@@ -27,5 +27,10 @@ export const useProduct = (): UseProduct => {
             setCart([...cart, product]);
         }
     };
-    return { products, addToCart,cart};
+
+    const removeFromCart = (id: number) => {
+        const newCart:Product[] = cart.filter((item) => item.id !== id);
+        setCart(newCart);
+    };
+    return { products, addToCart,cart, removeFromCart};
 }
