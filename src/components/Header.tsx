@@ -3,8 +3,9 @@ interface HeaderProps {
   cart: Product[];
   removeFromCart: (id: number) => void;
   increaseQuantity: (id: number) => void;
+  decreaseQuantity: (id: number) => void;
 }
-export const Header = ({ cart,removeFromCart,increaseQuantity }: HeaderProps) => {
+export const Header = ({ cart,removeFromCart,increaseQuantity,decreaseQuantity }: HeaderProps) => {
   return (
     <header className="py-5 header">
       <div className="container-xl">
@@ -43,7 +44,9 @@ export const Header = ({ cart,removeFromCart,increaseQuantity }: HeaderProps) =>
                         <td>{product.title}</td>
                         <td className="fw-bold">${product.price}</td>
                         <td className="flex align-items-start gap-4">
-                          <button type="button" className="btn btn-dark">
+                          <button type="button" className="btn btn-dark" onClick={
+                            ()=>{decreaseQuantity(product.id)}
+                          }>
                             -
                           </button>
                           {product.quantity}

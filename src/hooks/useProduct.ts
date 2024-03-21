@@ -7,6 +7,7 @@ export const useProduct = (): UseProduct => {
   const [products, setProducts] = useState<Product[]>([]);
   const [cart, setCart] = useState<Product[]>([]);
   const MAX_ITEMS: number = 10;
+  const MIN_ITEMS: number = 1;
   useEffect(() => {
     const fetchProducts = async () => {
       const productsRes = await getProducts();
@@ -44,7 +45,7 @@ export const useProduct = (): UseProduct => {
 
   const decreaseQuantity = (id: number) => {
     const newCart:Product[] = cart.map((item) =>
-      item.id === id && item.quantity > 1
+      item.id === id && item.quantity > MIN_ITEMS
         ? { ...item, quantity: item.quantity - 1 }
         : item
     );
