@@ -27,5 +27,5 @@ export const useProduct = (): UseProduct => {
             setCart([...cart, product]);
         }
     };
-    return { products, addToCart};
+    return { products, addToCart,cart};
 }
