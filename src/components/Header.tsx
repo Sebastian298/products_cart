@@ -1,8 +1,9 @@
 import { Product } from "../interfaces/Product";
 interface HeaderProps {
   cart: Product[];
+  removeFromCart: (id: number) => void;
 }
-export const Header = ({ cart }: HeaderProps) => {
+export const Header = ({ cart,removeFromCart }: HeaderProps) => {
   return (
     <header className="py-5 header">
       <div className="container-xl">
@@ -50,7 +51,7 @@ export const Header = ({ cart }: HeaderProps) => {
                           </button>
                         </td>
                         <td>
-                          <button className="btn btn-danger" type="button">
+                          <button className="btn btn-danger" type="button" onClick={()=>{removeFromCart(product.id)}}>
                             X
                           </button>
                         </td>

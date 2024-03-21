@@ -2,10 +2,10 @@ import { Header } from "./components/Header";
 import { Products } from "./components/Products";
 import {useProduct} from './hooks/useProduct'
 export const App = () => {
-  const {products,addToCart,cart} = useProduct();
+  const {products,addToCart,cart,removeFromCart} = useProduct();
   return (
     <>
-      <Header cart={cart}/>
+      <Header cart={cart} removeFromCart={removeFromCart}/>
       <main className="container-xl mt-5">
         <h2 className="text-center">Our Products</h2>
         <div className="row mt-5">
