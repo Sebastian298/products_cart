@@ -2,8 +2,9 @@ import { Product } from "../interfaces/Product";
 interface HeaderProps {
   cart: Product[];
   removeFromCart: (id: number) => void;
+  increaseQuantity: (id: number) => void;
 }
-export const Header = ({ cart,removeFromCart }: HeaderProps) => {
+export const Header = ({ cart,removeFromCart,increaseQuantity }: HeaderProps) => {
   return (
     <header className="py-5 header">
       <div className="container-xl">
@@ -46,7 +47,9 @@ export const Header = ({ cart,removeFromCart }: HeaderProps) => {
                             -
                           </button>
                           {product.quantity}
-                          <button type="button" className="btn btn-dark">
+                          <button type="button" className="btn btn-dark" onClick={
+                            ()=>{increaseQuantity(product.id)}
+                          }>
                             +
                           </button>
                         </td>
