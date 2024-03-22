@@ -4,8 +4,9 @@ import { getProducts } from "../api/services/product";
 import { Product } from "../interfaces/Product";
 
 export const useProduct = (): UseProduct => {
+  const initialCart: Product[] = JSON.parse(localStorage.getItem("cart") || "[]");
   const [products, setProducts] = useState<Product[]>([]);
-  const [cart, setCart] = useState<Product[]>([]);
+  const [cart, setCart] = useState<Product[]>([...initialCart]);
   const MAX_ITEMS: number = 10;
   const MIN_ITEMS: number = 1;
   useEffect(() => {
@@ -15,6 +16,11 @@ export const useProduct = (): UseProduct => {
     };
     fetchProducts();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart])
+  
 
   const addToCart = (product: Product) => {
     const itemExist: number = cart.findIndex((item) => item.id === product.id);
