@@ -4,8 +4,9 @@ interface HeaderProps {
   removeFromCart: (id: number) => void;
   increaseQuantity: (id: number) => void;
   decreaseQuantity: (id: number) => void;
+  clearCart: () => void;
 }
-export const Header = ({ cart,removeFromCart,increaseQuantity,decreaseQuantity }: HeaderProps) => {
+export const Header = ({ cart,removeFromCart,increaseQuantity,decreaseQuantity,clearCart }: HeaderProps) => {
   return (
     <header className="py-5 header">
       <div className="container-xl">
@@ -69,7 +70,8 @@ export const Header = ({ cart,removeFromCart,increaseQuantity,decreaseQuantity }
                 <p className="text-end">
                   Total due: <span className="fw-bold">$899</span>
                 </p>
-                <button className="btn btn-dark w-100 mt-3 p-2">
+                <button className="btn btn-dark w-100 mt-3 p-2"
+                onClick={()=>{clearCart()}}>
                   Empty Cart
                 </button>
               </div>
