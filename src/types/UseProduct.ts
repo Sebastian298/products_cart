@@ -8,4 +8,5 @@ export type UseProduct = {
     increaseQuantity: (id: number) => void;
     decreaseQuantity: (id: number) => void;
     clearCart: () => void;
+    isEmptyCart: boolean;
 }

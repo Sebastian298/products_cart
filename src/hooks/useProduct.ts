@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useMemo } from "react";
 import { UseProduct } from "../types/UseProduct";
 import { getProducts } from "../api/services/product";
 import { Product } from "../interfaces/Product";
@@ -55,5 +55,7 @@ export const useProduct = (): UseProduct => {
   const clearCart = () => {
     setCart([]);
   }
-  return { products, addToCart, cart, removeFromCart, increaseQuantity,decreaseQuantity,clearCart };
+
+  const isEmptyCart: boolean = useMemo(() => cart.length === 0, [cart]);
+  return { products, addToCart, cart, removeFromCart, increaseQuantity,decreaseQuantity,clearCart,isEmptyCart };
 };
