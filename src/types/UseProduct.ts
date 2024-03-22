@@ -9,4 +9,5 @@ export type UseProduct = {
     decreaseQuantity: (id: number) => void;
     clearCart: () => void;
     isEmptyCart: boolean;
+    totalCart: number;
 }

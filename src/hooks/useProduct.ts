@@ -57,5 +57,6 @@ export const useProduct = (): UseProduct => {
   }
 
   const isEmptyCart: boolean = useMemo(() => cart.length === 0, [cart]);
-  return { products, addToCart, cart, removeFromCart, increaseQuantity,decreaseQuantity,clearCart,isEmptyCart };
+  const totalCart: number = useMemo(() => cart.reduce((acc, item) => acc + item.quantity, 0), [cart]);
+  return { products, addToCart, cart, removeFromCart, increaseQuantity,decreaseQuantity,clearCart,isEmptyCart,totalCart };
 };
